@@ -10,7 +10,7 @@
 #
 require 'inspec/aws'
 
-ENV['vpc_id'] = 'vpc-e81ba68f'
+#ENV['vpc_id'] = 'vpc-e81ba68f'
 
   puts "Running Inspec on example profile..."
   o = {}
