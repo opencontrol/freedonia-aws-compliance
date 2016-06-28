@@ -1,0 +1,10 @@
+# encoding: utf-8
+source 'https://rubygems.org'
+
+#gem 'inspec-aws', :git => 'https://github.com/arothian/inspec-aws.git'
+gem 'inspec-aws', :path => '/Users/pburkholder/Projects/misc/inspec-aws'
+
+group :tools do
+  gem 'pry', '~> 0.10'
+  gem 'rb-readline'
+end
