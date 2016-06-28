@@ -7,10 +7,16 @@ control 'sg-1' do
   describe Vpc.new(id:'vpc-e81ba68f') do
      its(:id) { should eq 'vpc-e81ba68f' }
   end
+end
 
-#  Vpc.new(id: ENV['vpc_id']).security_groups.each do |security_group|
-#    describe security_group do
-#      it { should_not have_ingress_rule().with_source('0.0.0.0/0') }
-#    end
-#  end
+control 'sg-2' do
+  impact 0.9
+  title 'a'
+  desc  'b'
+
+  Vpc.new(id: 'vpc-e81ba68f').security_groups.each do |security_group|
+    describe SecurityGroup.new(id:security_group.id) do
+      it { should_not have_ingress_rule().with_source('0.0.0.0/0') }
+    end
+  end
 end
