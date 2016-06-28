@@ -14,13 +14,13 @@ ENV['vpc_id'] = 'vpc-e81ba68f'
 
   puts "Running Inspec on example profile..."
   o = {}
+  o[:log_format] = 'json'
   o[:logger] = Logger.new(STDOUT)
-  o[:logger].level = 'info'
+  o[:logger].level = 'debug'
   o[:ignore_supports] = true
 
   runner = Inspec::Runner.new(o)
-  require 'pry'
-#  binding.pry
   profile = Inspec::Profile.for_target('./profile',{})
   runner.add_profile(profile)
   runner.run
+  print JSON.pretty_generate(runner.report)
