@@ -1,16 +1,8 @@
 schema_version: "1.0.0"
-name: freedonia.fd
+name: freedonia-aws
 metadata:
-  description: hello_world
+  description: Freedonia AWS compliance regime
   maintainers:
     - pburkholder@pobox.com
 components:
-  - ./AU_policy
-
-dependencies:
-  standards:
-    - url: https://github.com/pburkholder/freedonia-frist/
-      revision: master
-  certifications:
-    - url: https://github.com/pburkholder/freedonia-frist/
-      revision: master
+  - ./compliance/AWS_policy
