@@ -1,35 +1,51 @@
 documentation_complete: false
-name: Audit Policy
+name: AWS Implementation
 schema_version: 3.0.0
 references:
-- name: AU Policy
-  path: https://github.com/pburkholder/freedonia-policies/wiki/Audit-Policy
+- name: SC Policy
+  path: https://github.com/pburkholder/freedonia-aws-compliance/wiki/Security_Controls
+  type: URL
 satisfies:
-- control_key: PE-2
-  standard_key: FRIST-800-53
-  covered_by: []
-  implementation_status: complete
-  narrative:
-    - text: |
-        This text describes how our organization is meeting the requirements for the
-        Audit policy, and also references a more complete description at ./AU_policy/README.md
-
-        Since the AU-1 `control` is document and disseminate a policy on Audit and Accountability, then
-        this narrative suffices to provide that control. A verification step could be something
-        that checks that the referenced policy is no more than 365 days old.
-- control_key: SC-2
+- control_key: AU-2
   standard_key: FRIST-800-53
   covered_by: []
   implementation_status: none
   narrative:
    - text: |
-        Application and Server logs are sent to PaperTrail to provide audit
-        reduction and report generation capabilites for Freedonia Devops and end users
-        of the Freedonia hello_world system.
+        AU-2 - Audit Events
+        All AWS events are sent to AWS CloudWatch.
+        This is implemented with our Terraform build using the
+        `aws_cloudtrail` resource (https://www.terraform.io/docs/providers/aws/r/cloudtrail.html)
 
-        PaperTrail is a SaaS for aggregation of audit log data across multiple systems and tiers
+        A verification step can be done by confirming the existence
+        of the Cloudwatch bucket etc. with InSpec.
+- control_key: SC-1
+  standard_key: FRIST-800-53
+  covered_by: []
+  implementation_status: none
+  narrative:
+    - text: |
+        SC-1 - System and Communications Protection Policy and Procedures
+        This text describes how our organization is meeting the requirements for the
+        Security Controls policy, and also references a more complete description at
+        the referenced document at
+        https://github.com/pburkholder/freedonia-aws-compliance/wiki/Security_Controls
 
-        With the PaperTrail capability the organizations's operations and development teams
-        can structure and customize audit logs queries to specific app instances, API
-        calls, system metrics, user access, system components, network traffic flow and
-        other criteria.
+
+        Since the SC-1 `control` is to document and disseminate a policy on
+        Security Controls
+        this narrative suffices to provide that control. A verification step could be something
+        that checks that the referenced policy is no more than 365 days old.
+- control_key: SC-7
+  standard_key: FRIST-800-53
+  covered_by: []
+  implementation_status: none
+  narrative:
+    - text: |
+        SC-7 - Boundary protection
+
+        Boundary protection is provided, in AWS, with Security Groups that do not allow
+        ingress except to port 443 on the ELBs
+
+        Verification: No security groups allow 0.0.0.0 inbound except ones named 'elb.*' can
+        allowed port 443 to 0.0.0.0 (testing with InspecAws)
