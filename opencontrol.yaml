@@ -5,4 +5,5 @@ metadata:
   maintainers:
     - pburkholder@pobox.com
 components:
-  - ./compliance/AWS_policy
+  - ./compliance/AWS_core
+  - ./compliance/AWS_implementation
