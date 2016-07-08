@@ -1,0 +1,9 @@
+schema_version: "1.0.0"
+name: freedonia-aws
+metadata:
+  description: Freedonia AWS compliance regime
+  maintainers:
+    - pburkholder@pobox.com
+components:
+  - ./compliance/AWS_core
+  - ./compliance/AWS_implementation
