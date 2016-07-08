@@ -3,7 +3,7 @@ name: AWS Implementation
 schema_version: 3.0.0
 references:
 - name: SC Policy
-  path: https://github.com/pburkholder/freedonia-aws-compliance/wiki/Security_Controls
+  path: https://github.com/pburkholder/freedonia-aws-compliance/wiki/Security-Controls
   type: URL
 satisfies:
 - control_key: AU-2
